@@ -8,6 +8,6 @@ class Piece
   end
 
   def location
-    @board.index(self)
+    @board.board.index(self)
   end
 end
