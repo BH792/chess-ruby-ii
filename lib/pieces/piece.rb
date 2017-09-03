@@ -1,4 +1,6 @@
 class Piece
+  include CoordMath
+
   attr_reader :color, :moved, :board
 
   def initialize(color, board)
@@ -19,5 +21,23 @@ class Piece
 
   def has_moved
     @moved = false
+  end
+
+  def same_color?(potential_move)
+    @board.board[potential_move[0]][potential_move[1]].color == self.color
+  end
+
+  def strip_same_color(potential_moves)
+    potential_moves.select do |move|
+      if @board.board[move[0]][move[1]]
+        !same_color?(move)
+      else
+        true
+      end
+    end
+  end
+
+  def strip_invalid(potential_moves)
+    strip_same_color(strip_invalid_coords(potential_moves))
   end
 end

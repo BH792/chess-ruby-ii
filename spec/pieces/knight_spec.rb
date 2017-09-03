@@ -9,8 +9,8 @@ describe Knight do
 
   context "#valid_moves" do
     it "returns an array of all valid move coordinates" do
-      expect(@black_knight.valid_moves).to eq([[2,0], [2,2]])
-      expect(@white_knight.valid_moves).to eq([[5,0], [5,2]])
+      expect(@black_knight.valid_moves).to include([2,0], [2,2])
+      expect(@white_knight.valid_moves).to include([5,0], [5,2])
     end
   end
 end
