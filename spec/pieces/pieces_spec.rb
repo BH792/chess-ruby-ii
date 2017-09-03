@@ -19,4 +19,11 @@ describe Piece do
     end
   end
 
+  context "#has_moved" do
+    it "sets moved instance variable to false" do
+      piece = @board.board[2]
+      piece.has_moved
+      expect(piece.moved).to eq(false)
+    end
+  end
 end

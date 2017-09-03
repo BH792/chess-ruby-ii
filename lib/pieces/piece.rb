@@ -10,4 +10,8 @@ class Piece
   def location
     @board.board.index(self)
   end
+
+  def has_moved
+    @moved = false
+  end
 end
