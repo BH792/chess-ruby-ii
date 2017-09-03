@@ -2,18 +2,14 @@ class Chessboard
   attr_reader :board
 
   def initialize
-    @board = Array.new(64, nil)
+    @board = Array.new(8, Array.new(8, nil))
 
     #set pawns
-    for i in (8..15)
-      @board[i] = Pawn.new("black",self)
-    end
-    for i in (48..55)
-      @board[i] = Pawn.new("white",self)
-    end
+    @board[1] = Array.new(8, Pawn.new("black",self))
+    @board[6] = Array.new(8, Pawn.new("white",self))
 
     #set other pieces
-    black = [
+    @board[0] = [
       Rook.new("black",self),
       Knight.new("black",self),
       Bishop.new("black",self),
@@ -23,7 +19,7 @@ class Chessboard
       Knight.new("black",self),
       Rook.new("black",self),
     ]
-    white = [
+    @board[7] = [
       Rook.new("white",self),
       Knight.new("white",self),
       Bishop.new("white",self),
@@ -33,12 +29,9 @@ class Chessboard
       Knight.new("white",self),
       Rook.new("white",self),
     ]
-    for i in (0..7)
-      @board[i] = black.shift
-    end
-    for i in (56..63)
-      @board[i] = white.shift
-    end
+  end
 
+  def print
+    puts @board.flatten.map { |e| e.class }
   end
 end

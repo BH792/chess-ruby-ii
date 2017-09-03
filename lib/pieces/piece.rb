@@ -8,7 +8,13 @@ class Piece
   end
 
   def location
-    @board.board.index(self)
+    @board.board.each_index do |row|
+      @board.board.each_index do |col|
+        if @board.board[row][col] == self
+          return [row,col]
+        end
+      end
+    end
   end
 
   def has_moved
