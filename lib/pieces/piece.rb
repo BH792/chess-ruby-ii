@@ -1,7 +1,8 @@
 class Piece
   include CoordMath
 
-  attr_reader :color, :moved, :board
+  attr_writer :board
+  attr_reader :color, :moved
 
   def initialize(color, board)
     @color = color

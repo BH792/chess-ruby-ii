@@ -2,11 +2,11 @@ class Chessboard
   attr_reader :board
 
   def initialize
-    @board = Array.new(8, Array.new(8, nil))
+    @board = Array.new(8) {Array.new(8, nil)}
 
     #set pawns
-    @board[1] = Array.new(8, Pawn.new("black",self))
-    @board[6] = Array.new(8, Pawn.new("white",self))
+    @board[1] = Array.new(8) {Pawn.new("black",self)}
+    @board[6] = Array.new(8) {Pawn.new("white",self)}
 
     #set other pieces
     @board[0] = [
@@ -31,7 +31,12 @@ class Chessboard
     ]
   end
 
+  def move(cur_loc, new_loc)
+    @board[new_loc[0]][new_loc[1]] = @board[cur_loc[0]][cur_loc[1]]
+    @board[cur_loc[0]][cur_loc[1]] = nil
+  end
+
   def print
-    puts @board.flatten.map { |e| e.class }
+    pp @board.map{|r| r.map { |c| c.class.to_s }}
   end
 end
