@@ -48,6 +48,10 @@ class Chessboard
     @board[cur_loc[0]][cur_loc[1]] = nil
   end
 
+  def all_pieces(color)
+    @board.compact.select { |piece| piece.color == color }
+  end
+
   def print
     pp @board.map{|r| r.map { |c| c.class.to_s }}
   end
