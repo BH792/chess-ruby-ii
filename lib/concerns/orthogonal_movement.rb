@@ -19,6 +19,4 @@ module OrthogonalMovement
       end
     end
   end
-
-
 end
