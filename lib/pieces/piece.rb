@@ -21,7 +21,7 @@ class Piece
   end
 
   def has_moved
-    @moved = false
+    @moved = true
   end
 
   def same_color?(potential_move)

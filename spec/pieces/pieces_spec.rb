@@ -23,7 +23,7 @@ describe Piece do
     it "sets moved instance variable to false" do
       piece = @board.board[0][2]
       piece.has_moved
-      expect(piece.moved).to eq(false)
+      expect(piece.moved).to eq(true)
     end
   end
 end

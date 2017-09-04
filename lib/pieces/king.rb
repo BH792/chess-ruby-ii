@@ -20,6 +20,28 @@ class King < Piece
   end
 
   def king_castle_moves
-    []
+    if !moved
+      row = color == "black" ? 0 : 7
+      castle_moves = []
+
+      castle_moves << [row, 2] if castle_queen_side_valid?([row, 0])
+      castle_moves << [row, 6] if castle_king_side_valid?([row, 7])
+
+      castle_moves
+    else
+      []
+    end
+  end
+
+  def castle_queen_side_valid?(coords)
+    @board.board[coords[0]][coords[1]] != nil &&
+    @board.board[coords[0]][coords[1]].moved == false &&
+    @board.all_empty?([[coords[0], 1], [coords[0], 2], [coords[0], 3]])
+  end
+
+  def castle_king_side_valid?(coords)
+    @board.board[coords[0]][coords[1]] != nil &&
+    @board.board[coords[0]][coords[1]].moved == false &&
+    @board.all_empty?([[coords[0], 5], [coords[0], 6]])
   end
 end

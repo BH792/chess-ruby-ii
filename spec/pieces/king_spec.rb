@@ -42,7 +42,7 @@ describe King do
 
     it "does not allow castling if a piece has moved" do
       @board.board[0][0].has_moved
-      expect(@black_king.king_castle_moves).to eq([0,6])
+      expect(@black_king.king_castle_moves).to eq([[0,6]])
       @black_king.has_moved
       expect(@black_king.king_castle_moves).to eq([])
     end
