@@ -32,6 +32,10 @@ class Chessboard
     ]
   end
 
+  def get_king(color)
+    @board.flatten(1).detect { |piece| piece.class == King && piece.color == color}
+  end
+
   def empty?(coords)
     # returns true of the space is empty
     # returns false if space is not empty or if the space is not on the board
@@ -52,6 +56,8 @@ class Chessboard
     @board.flatten(1).compact.select { |piece| piece.color == color }
   end
 
+# testing only
+# TODO delete
   def print
     pp @board.map{|r| r.map { |c| c.class.to_s }}
   end

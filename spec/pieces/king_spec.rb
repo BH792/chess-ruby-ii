@@ -22,6 +22,36 @@ describe King do
     end
   end
 
+  context "#king_castle_moves" do
+    before(:all) do
+      @board = Chessboard.new
+      @black_king = @board.board[0][4]
+      @white_king = @board.board[7][4]
+      [1, 2, 3, 5, 6].each do |col|
+        @board.board[0][col] = nil
+      end
+      [1, 3, 6].each do |col|
+        @board.board[0][col] = nil
+      end
+    end
+
+    it "returns array of castling coordinates for both king & queen side" do
+      expect(@black_king.king_castle_moves).to include([0,2], [0,6])
+      expect(@black_king.king_castle_moves.length).to eq(2)
+    end
+
+    it "does not allow castling if a piece has moved" do
+      @board.board[0][0].has_moved
+      expect(@black_king.king_castle_moves).to eq([0,6])
+      @black_king.has_moved
+      expect(@black_king.king_castle_moves).to eq([])
+    end
+
+    it "does not allow castling if the path is blocked" do
+      expect(@black_king.king_castle_moves).to eq([])
+    end
+  end
+
   context "#in_check?" do
     before(:all) do
       @board = Chessboard.new
