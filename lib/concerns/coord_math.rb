@@ -23,8 +23,8 @@ module CoordMath
     end
   end
 
-# returns true if coords refer to a square on the board
   def valid_coord?(coords)
+    # returns true if coords refer to a square on the board
     coords[0] >= 0 && coords[0] <= 7 && coords[1] >= 0 && coords[1] <= 7
   end
 end

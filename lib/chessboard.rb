@@ -32,9 +32,9 @@ class Chessboard
     ]
   end
 
-  # returns true of the space is empty
-  # returns false if space is not empty or if the space is not on the board
   def empty?(coords)
+    # returns true of the space is empty
+    # returns false if space is not empty or if the space is not on the board
     valid_coord?(coords) ? @board[coords[0]][coords[1]] == nil : false
   end
 
