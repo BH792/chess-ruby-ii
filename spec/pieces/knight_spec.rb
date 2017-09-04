@@ -14,7 +14,6 @@ describe Knight do
     end
 
     it "supports all possible knight moves" do
-      @board.board[3][3] = @board.board[0][1]
       @board.move([0,1],[3,3])
       @board.board[1][2] = nil
       @board.board[1][4] = nil
