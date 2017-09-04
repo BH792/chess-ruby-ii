@@ -7,13 +7,19 @@ module OrthogonalMovement
   ]
 
   def orthogonal_moves(max_spaces: 8, all_directions: true)
-    offsets = all_directions ? OFFSETS : OFFSETS[3]
+    offsets = all_directions ? OFFSETS : [OFFSETS[3]]
 
-    offsets.each_with_object([]) do |offset, array|
-      for i in 1..8 do
-        array.concat(add_offset(multiply_offset(offset, i), location))
+    a = offsets.each_with_object([]) do |offset, array|
+      for i in 1..8
+        trace = add_offset_to_limit(offset, location, i)
+        target = trace.pop
+
+        break if !@board.all_empty?(trace)
+        array << target
       end
     end
+    a
   end
+
 
 end

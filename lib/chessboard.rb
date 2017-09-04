@@ -1,4 +1,5 @@
 class Chessboard
+  include CoordMath
   attr_reader :board
 
   def initialize
@@ -29,6 +30,14 @@ class Chessboard
       Knight.new("white",self),
       Rook.new("white",self),
     ]
+  end
+
+  def empty?(coords)
+    valid_coord?(coords) ? @board[coords[0]][coords[1]] == nil : false
+  end
+
+  def all_empty?(coords_array)
+    coords_array.all? { |coords| empty?(coords) }
   end
 
   def move(cur_loc, new_loc)

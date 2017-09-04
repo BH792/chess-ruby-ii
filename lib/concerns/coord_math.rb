@@ -1,15 +1,30 @@
 module CoordMath
-  def add_offset(arr_a, arr_b)
-    [arr_a[0] + arr_b[0], arr_a[1] + arr_b[1]]
+  def add_offset(offset, location)
+    [offset[0] + location[0], offset[1] + location[1]]
+  end
+
+  def add_offset_to_limit(offset, location, limit)
+    coords = []
+
+    for i in 1..limit
+      coords << [offset[0] * i + location[0], offset[1] * i + location[1]]
+    end
+
+    coords
   end
 
   def multiply_offset(arr, int)
-    arr.map! { |x| x * int}
+    arr.map { |x| x * int}
   end
 
   def strip_invalid_coords(arr)
     arr.select do |coords|
-      coords[0] >= 0 && coords[0] <= 7 && coords[1] >= 0 && coords[1] <= 7
+      valid_coord?(coords)
     end
+  end
+
+# returns true if coords refer to a square on the board
+  def valid_coord?(coords)
+    coords[0] >= 0 && coords[0] <= 7 && coords[1] >= 0 && coords[1] <= 7
   end
 end

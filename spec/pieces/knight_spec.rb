@@ -19,6 +19,7 @@ describe Knight do
       @board.board[1][2] = nil
       @board.board[1][4] = nil
       expect(@black_knight.valid_moves).to include([1,2], [1,4], [2,5], [4,5], [5,4], [5,2], [4,1], [2,1])
+      expect(@black_knight.valid_moves.length).to eq(8)
     end
   end
 end
