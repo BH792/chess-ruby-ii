@@ -24,6 +24,8 @@ class Piece
     @moved = false
   end
 
+  # returns true if the piece at location passed is the same color
+  # must check potential_move is not nil before passing
   def same_color?(potential_move)
     @board.board[potential_move[0]][potential_move[1]].color == self.color
   end
@@ -39,7 +41,6 @@ class Piece
   end
 
   def strip_invalid(potential_moves)
-    results = strip_same_color(strip_invalid_coords(potential_moves))
-    results.length == 1 ? results.flatten : results
+    strip_same_color(strip_invalid_coords(potential_moves))
   end
 end

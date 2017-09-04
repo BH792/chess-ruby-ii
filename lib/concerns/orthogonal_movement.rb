@@ -7,7 +7,7 @@ module OrthogonalMovement
   ]
 
   def orthogonal_moves(max_spaces: 8, all_directions: true)
-    offsets = all_directions ? OFFSETS : [OFFSETS[3]]
+    offsets = orthongonal_direction_to_offset(all_directions)
 
     offsets.each_with_object([]) do |offset, array|
       for i in 1..max_spaces
@@ -17,6 +17,17 @@ module OrthogonalMovement
         break if !@board.all_empty?(trace)
         array << target
       end
+    end
+  end
+
+  def orthongonal_direction_to_offset(direction)
+    case direction
+    when true
+      OFFSETS
+    when "up"
+      [OFFSETS[3]]
+    when "down"
+      [OFFSETS[2]]
     end
   end
 end

@@ -11,7 +11,7 @@ describe King do
     it "takes an array of current location and returns array of valid moves " do
       expect(@black_king.valid_moves.length).to eq(0)
       @board.board[6][4] = nil
-      expect(@white_king.valid_moves).to eq([6,4])
+      expect(@white_king.valid_moves).to eq([[6,4]])
     end
 
     it "supports all possible normal king moves" do
