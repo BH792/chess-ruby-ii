@@ -10,7 +10,7 @@ module DiagonalMovement
     offsets = all_directions ? OFFSETS : OFFSETS[0,2]
 
     offsets.each_with_object([]) do |offset, array|
-      for i in 1..8
+      for i in 1..max_spaces
         trace = add_offset_to_limit(offset, location, i)
         target = trace.pop
 

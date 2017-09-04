@@ -39,6 +39,7 @@ class Piece
   end
 
   def strip_invalid(potential_moves)
-    strip_same_color(strip_invalid_coords(potential_moves))
+    results = strip_same_color(strip_invalid_coords(potential_moves))
+    results.length == 1 ? results.flatten : results
   end
 end

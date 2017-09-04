@@ -14,10 +14,10 @@ describe King do
       expect(@white_king.valid_moves).to eq([6,4])
     end
 
-    it "supports all possible king moves" do
+    it "supports all possible normal king moves" do
       @board.move([0,4], [3,3])
       expect(@black_king.valid_moves).to include([3, 2], [3, 4], [2, 3], [4, 3], [2, 2], [2, 4], [4, 2], [4, 4])
-      expect(@black_king.valid_moves.length).to eq(11)
+      expect(@black_king.valid_moves.length).to eq(8)
     end
   end
 end
