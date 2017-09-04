@@ -6,6 +6,14 @@ class King < Piece
   end
 
   def in_check?
-    
+    opposing_pieces = @board.all_pieces(opposite_color)
+
+    opposing_pieces.each do |piece|
+      return true if piece.valid_moves.include?(location)
+    end
+
+    false
   end
+
+  
 end

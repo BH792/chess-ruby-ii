@@ -49,7 +49,7 @@ class Chessboard
   end
 
   def all_pieces(color)
-    @board.compact.select { |piece| piece.color == color }
+    @board.flatten(1).compact.select { |piece| piece.color == color }
   end
 
   def print

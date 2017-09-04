@@ -43,4 +43,8 @@ class Piece
   def strip_invalid(potential_moves)
     strip_same_color(strip_invalid_coords(potential_moves))
   end
+
+  def opposite_color
+    color == "black" ? "white" : "black"
+  end
 end
