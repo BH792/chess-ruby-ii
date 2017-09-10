@@ -1,7 +1,7 @@
 require "bundler"
 Bundler.require
 
-require_all "lib/concerns"
-require_all "lib/pieces"
-require_all "lib"
+require_all "app/models/concerns"
+require_all "app/models/pieces"
+require_all "app"
 require "pp"

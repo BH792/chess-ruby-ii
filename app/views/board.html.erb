@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="/css/board.css" rel="stylesheet" type="text/css">
+    <meta charset="utf-8">
+    <title>Chess</title>
+  </head>
+  <body>
+
+    <div class="board">
+    <% @board.each_with_index do |row, row_num| %>
+      <div class="row">
+        <% row.each_with_index do |piece, col_num| %>
+          <a href="/board/<%= row_num %>/<%= col_num %>">
+            <div class="col">
+              <%= piece %>
+            </div>
+          </a>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+
+  </body>
+</html>
